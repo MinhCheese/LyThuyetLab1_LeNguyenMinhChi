@@ -4,7 +4,10 @@ import { View, Text, StyleSheet, Platform } from 'react-native';
 const Part6 = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello, Platform Specific Styling!</Text>
+     
+      <Text style={styles.deviceText}>
+        Bạn đang dùng thiết bị {Platform.OS === 'ios' ? 'iOS' : 'Android'} phải không .Tôi biết hết đấy 
+      </Text>
     </View>
   );
 };
@@ -16,28 +19,34 @@ const styles = StyleSheet.create({
       android: 10,
     }),
     backgroundColor: Platform.select({
-      ios: '#007AFF', // màu xanh đặc trưng của iOS
-      android: '#3DDC84', // màu xanh lá của Android
+      ios: '#007AFF',
+      android: '#3DDC84',
     }),
-    borderRadius: Platform.OS === 'ios' ? 10 : 5,  // bo góc nhẹ cho iOS, ít hơn cho Android
-    shadowColor: Platform.OS === 'ios' ? '#000' : 'transparent', // đổ bóng cho iOS, không đổ bóng cho Android
-    shadowOpacity: Platform.OS === 'ios' ? 0.2 : 0, // độ mờ của bóng trên iOS
-    elevation: Platform.OS === 'android' ? 4 : 0,  // nâng cao để tạo hiệu ứng đổ bóng trên Android
+    borderRadius: Platform.OS === 'ios' ? 10 : 5,
+    shadowColor: Platform.OS === 'ios' ? '#000' : 'transparent',
+    shadowOpacity: Platform.OS === 'ios' ? 0.2 : 0,
+    elevation: Platform.OS === 'android' ? 4 : 0,
     marginTop: Platform.select({
-      ios: 50,  // khoảng cách trên cùng lớn hơn trên iOS
-      android: 20,  // khoảng cách trên cùng nhỏ hơn trên Android
+      ios: 50,
+      android: 20,
     }),
   },
   text: {
     fontSize: Platform.OS === 'ios' ? 18 : 16,
-    fontWeight: Platform.OS === 'ios' ? '600' : '400', // trọng lượng chữ đậm hơn trên iOS
+    fontWeight: Platform.OS === 'ios' ? '600' : '400',
     color: Platform.OS === 'ios' ? '#FFFFFF' : '#000000',
     textAlign: Platform.OS === 'ios' ? 'center' : 'left',
-    lineHeight: Platform.OS === 'ios' ? 24 : 20, // khoảng cách giữa các dòng văn bản
+    lineHeight: Platform.OS === 'ios' ? 24 : 20,
+  },
+  deviceText: {
+    fontSize: 16,
+    color: Platform.OS === 'ios' ? '#FFFFFF' : '#000000',
+    marginTop: 10,
+    textAlign: 'center',
   },
   button: {
-    width: Platform.OS === 'ios' ? 200 : 180, // chiều rộng lớn hơn trên iOS
-    height: Platform.OS === 'ios' ? 50 : 45,  // chiều cao cho iOS
+    width: Platform.OS === 'ios' ? 200 : 180,
+    height: Platform.OS === 'ios' ? 50 : 45,
     borderColor: Platform.OS === 'ios' ? '#007AFF' : '#3DDC84',
     borderWidth: Platform.OS === 'ios' ? 2 : 1,
   },
